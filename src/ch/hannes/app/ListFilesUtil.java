@@ -1,4 +1,8 @@
-package ch.helsana.fsgapp;
+package ch.hannes.app;
+
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,15 +15,11 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 public class ListFilesUtil {
 
 	// 1. Liste mit allen Filenamen erstellen 
 	/**
-	 * Gibt alle Filenamen aus dem gewuenschten Verzeichnis als Liste zurück
+	 * Gibt alle Filenamen aus dem gewuenschten Verzeichnis als Liste zurï¿½ck
 	 * 
 	 * @param directoryName
 	 * @return List with Filenames
@@ -88,7 +88,7 @@ public class ListFilesUtil {
 	 * @throws IOException
 	 */
 	public HashMap<String, String> filesQueryKey(String directoryName, List<String> fileNames, List<String> queryKeys) throws IOException {
-		// HashMap für die gefundenen Resultate die dann zurück gegeben werden können
+		// HashMap fï¿½r die gefundenen Resultate die dann zurï¿½ck gegeben werden kï¿½nnen
 		HashMap<String, String> resultMap = new HashMap<String, String>();
 		
 		// Loop ueber alle im Verzeichnis gefundenen Files
@@ -112,7 +112,7 @@ public class ListFilesUtil {
 			for (String queryKey : queryKeys) {
 				// Value der HashMap zwischenspeichern
 				String tmpQueryKeys = resultMap.get(fileToRead);
-				// Wenn ein QueryKey gefunden wird, so wird dieser dem HashMapValue angehängt
+				// Wenn ein QueryKey gefunden wird, so wird dieser dem HashMapValue angehï¿½ngt
 				// Spitzige Klammern ">xxx<" sind notwendig, das eindeutig dieser String gefunden wird
 				if(fileAsString.toLowerCase().contains(">" + queryKey.toLowerCase() + "<")){
 					resultMap.put(fileToRead, tmpQueryKeys + ", " + queryKey);
@@ -134,17 +134,17 @@ public class ListFilesUtil {
 	 * @throws IOException
 	 */
 	public HashMap<String, String> queryKeyFiles(String directoryName, List<String> fileNames, List<String> queryKeys) throws IOException {
-		// HashMap für die gefundenen Resultate die dann zurück gegeben werden können
+		// HashMap fï¿½r die gefundenen Resultate die dann zurï¿½ck gegeben werden kï¿½nnen
 		HashMap<String, String> resultMap = new HashMap<String, String>();
 		
-		// Loop über alle QueryKeys
+		// Loop ï¿½ber alle QueryKeys
 		for(String queryKey : queryKeys){
 			// System.out.println("---> queryKey: " + queryKey);
 			
 			//HashMap mit Filenamen als Key initialisieren
 			resultMap.put(queryKey, "");
 			
-			// Loop über alle im Verzeichnis gefundenen Files
+			// Loop ï¿½ber alle im Verzeichnis gefundenen Files
 			for(String fileToRead : fileNames){
 				// System.out.println("---> Filenamen: " + fileToRead);
 				// File einlesen und als String bereit stellen
@@ -161,7 +161,7 @@ public class ListFilesUtil {
 				
 				// Value der HashMap zwischenspeichern
 				String tmpFileNames = resultMap.get(queryKey);
-				// Wenn ein QueryKey gefunden wird, so wird der Filenamen dem HashMapValue angehängt
+				// Wenn ein QueryKey gefunden wird, so wird der Filenamen dem HashMapValue angehï¿½ngt
 				// Spitzige Klammern ">xxx<" sind notwendig, das eindeutig dieser String gefunden wird
 				if(fileAsString.toLowerCase().contains(">" + queryKey.toLowerCase() + "<")){
 					resultMap.put(queryKey, tmpFileNames + ", " + fileToRead);
@@ -225,5 +225,5 @@ public class ListFilesUtil {
 			System.out.println("QueryKey: " + key + " / Files: " + value);
 		}
 	}
-
+// Ende
 }
