@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<link rel="stylesheet" href="css/bootstrap.css" />
+	<link rel="stylesheet" href="css/bootstrap-theme.css" />
+</h:head> 
+<body> 
+	
+	<div class="container">
+		<div class="jumbotron">
+			<h1>JPA Crashkurs</h1>
+		</div>
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h3>Buch anlegen</h3>
+			</div>
+		</div>
+		
+		<h:panelGroup rendered="#{ booksHandler.bookCreated }">
+			<div class="row">
+				<div class="col-lg-12">
+					Das Buch mit der ID #{ currentBook.id } wurde angelegt.
+				</div>
+			</div>
+		</h:panelGroup>
+		
+		<h:form>		
+			<div class="form-group">
+				<label>Titel des Buches</label>
+				<h:inputText value="#{ currentBook.title }" 
+				   styleClass="form-control" />
+			</div>
+			
+			<div class="form-group">
+				<label>ISBN des Buches</label>
+				<h:inputText value="#{ currentBook.isbn }" 
+				   styleClass="form-control" />
+			</div>
+			
+			<div class="form-group">
+				<label>Erscheinungsjahr des Buches</label>
+				<h:inputText value="#{ currentBook.year }" 
+				   styleClass="form-control">
+				   
+				   <f:validateLongRange minimum="1990" maximum="2025" />
+				   
+				</h:inputText>
+			</div>
+			
+			<div class="row">
+				<div class="col-lg-12">
+					&nbsp;<br />
+					<h:commandButton action="#{ booksHandler.createBook }" 
+					                 value="Buch anlegen!"
+					                 styleClass="btn btn-success" />
+				</div>
+			</div>
+		
+		</h:form>
+		
+	</div>
+
+	<script src="scripts/jquery-2.1.4.min.js"></script>
+	<script src="scripts/bootstrap.js"></script>
+</body> 
+</html>
